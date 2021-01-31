@@ -1,0 +1,59 @@
+<div class="admin-wrapper">
+    <div class="save-changes-wrapper">
+    <button class="save-changes-btn" (click)="saveChanges()">
+     Save Changes
+    </button>
+    </div>
+<div class="feed-list-wrapper">
+  <div class="list-wrapper">
+    <div class="list-header">Category</div>
+    <div class="list-container">
+      <div class="feed-list" *ngFor="let category of categoryList" (click)="showSubCategory(category)">
+        <div *ngIf="!category.isEdit">{{ category.name }}</div>
+         <input [ngModel]="category.name" (ngModelChange)="category.name=$event" *ngIf="category.isEdit" (keyup.enter)="category.isEdit=false">
+         <span>
+        <i class="fa fa-edit fa-sm pl-2" (click)="category.isEdit=true"></i> 
+        <i class="fa fa-trash fa-sm pl-2" (click)=deleteCategory(category.name)></i>
+        </span>
+      </div>
+      </div>
+      <div class="list-footer">
+    <input [(ngModel)]="categoryName">
+    <span class="add-category" (click)=addNewCategory(categoryName)>  <i class="fa fa-plus-circle fa-2x pl-1"></i></span>
+      </div>
+  </div>
+  <div class="list-wrapper">
+    <div  class="list-header">Sub Category</div>
+  <div class="list-container">
+      <div class="feed-list" *ngFor="let subCategory of subCategoryList" (click)="showTag(subCategory.id)">
+        <div *ngIf="!subCategory.isEdit">{{ subCategory.name }}</div>
+        <input [(ngModel)]="subCategory.name" (ngModelChange)="subCategory.name=$event" *ngIf="subCategory.isEdit" (keyup.enter)="EditSubCategory(subCategory); subCategory.isEdit=false ">
+        <span>
+        <i class="fa fa-edit fa-sm pl-2" (click)="subCategory.isEdit=true"></i> 
+        <i class="fa fa-trash fa-sm pl-2"></i>
+        </span>
+      </div>
+      </div> 
+      <div class="list-footer">
+    <input class="add-input" [(ngModel)]="tempSubCategory">
+    <span (click)=addNewSubCategory(tempSubCategory)>  <i class="fa fa-plus-circle fa-2x pl-1"></i></span>
+      </div> 
+    </div>
+  <div class="list-wrapper">
+    <div  class="list-header">Tags</div>
+  <div class="list-container">
+      <div class="feed-list" *ngFor="let tag of tagsList">
+        {{ tag.name }}
+        <span>
+        <i class="fa fa-edit fa-sm pl-2"></i> 
+        <i class="fa fa-trash fa-sm pl-2"></i>
+        </span>
+      </div>
+      </div>  
+      <div class="list-footer">
+    <input>
+    <span class="add-category">  <i class="fa fa-plus-circle fa-2x pl-1"></i></span>
+      </div>
+    </div>
+</div>
+</div>

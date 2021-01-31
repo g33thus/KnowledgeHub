@@ -1,0 +1,103 @@
+@import "variables";
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 0.5rem;
+}
+
+.container {
+  .article-container {
+    background-color: #fff;
+    min-height: 78vh;
+    margin-top: 155px;
+    .article-filters {
+      text-align: right;
+      padding: 3% 6% 0 3%;
+      a {
+        font-size: $font-size-medium;
+        &:active {
+          background-color: $white;
+        }
+      }
+    }
+    .card {
+      //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+      padding: 26px;
+      text-align: left;
+      background-color: #f1f1f1;
+      margin: 1.8em 0.5em;
+  
+      img {
+        display: inline-block;
+      }
+  
+      .card-header {
+        text-align: left;
+        margin-bottom: 0.5em;
+        font-size: $font-size-heading;
+        padding: 0.75rem 0.25rem;
+      }
+  
+      .card-text {
+        text-align: left;
+        font-size: $font-size-small;
+        text-align: justify;
+      }
+      .comments {
+        max-height: fit-content;
+        max-width: fit-content;
+      }
+      @media (max-width: 767px) {
+        .card-body {
+          padding: 0;
+          .feeder-comments {
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 575px) { 
+  .container {
+    .article-container {
+      box-shadow: $box-shadow;
+    }
+  }
+}
+
+@media (min-width: 768px) { 
+  .container {
+    .article-container {
+      margin-top: 88px;
+      img {
+        max-width: 20vw;
+        max-height: 20vh;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-top: 85px;
+    .article-container {
+      margin-top: 0;
+      .card {
+        margin: 1.8em 3.8em;
+      }
+      
+    }
+  }
+}
+.modal-dialog{
+  max-width: 1000px;
+}
+.modal-content {
+  height: 700px;
+}

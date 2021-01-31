@@ -1,0 +1,104 @@
+<div class="container">
+  <div class="row">
+    <div class="comments-header">
+      <div>
+      <button *ngIf="article.isLiked" class="comment-header-button" (click)="likeArticle(article, true)">
+        <i class="fa fa-heart" aria-hidden="true"></i> Like
+      </button>
+      <button *ngIf="!article.isLiked" class="comment-header-button" (click)="likeArticle(article, false)">
+        <i class="fa fa-heart-o" aria-hidden="true"></i> Like
+      </button>
+
+      <button
+        class="comment-header-button"
+        (click)="toggleDisplayCommentDetails()"
+      >
+        <i class="fa fa-comments" aria-hidden="true"></i> Comment
+      </button>
+
+      <button *ngIf="article.isSaved" class="comment-header-button" (click)="saveArticle(article, true)">
+        <i class="fa fa-bookmark" aria-hidden="true"></i> Save
+      </button>
+      <button *ngIf="!article.isSaved" class="comment-header-button" (click)="saveArticle(article, false)">
+        <i class="fa fa-bookmark-o" aria-hidden="true"></i> Save
+      </button>
+    </div>
+      <button
+        tabindex="0"
+        aria-label="Click to comment in this post"
+        class="comment-header-button-right"
+        (click)="toggleDisplayCommentDetails()"
+      >
+        {{article.article.likes}} Likes, 117 comments
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div *ngIf="isShowCommentDetails" class="comments">
+        <div *ngFor="let comment of comments" class="comment-box">
+          <div class="commenter-wrapper">
+          <div class="commenter-pic">
+            <img
+              src="https://img.icons8.com/ios/50/000000/change-user-male.png"
+              class="img-fluid"
+            />
+          </div>
+          <div class="commenter-name">
+            <span>{{comment.user.name}}</span>
+            <!--<span class="comment-time">2 hours ago</span>-->
+          </div>
+        </div>
+          <p class="comment-txt more">
+            {{comment.description}}
+          </p>
+          <div class="comment-box-button">
+            <button class="comment-like" aria-label="like this comment">
+              <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 20
+            </button>
+            <button class="comment-reply">
+              <i class="fa fa-reply-all" aria-hidden="true"></i> Reply
+            </button>
+          </div>
+          <div *ngFor="let reply of comment.reply" class="comment-box replied">
+            <div class="commenter-wrapper">
+            <div class="commenter-pic">
+              <img
+                src="https://img.icons8.com/ios/50/000000/change-user-male.png"
+                class="img-fluid"
+              />
+            </div>
+            <span class="commenter-name">
+              <span>{{reply.user.name}}</span>
+              <!--<span class="comment-time">2 hours ago</span>-->
+            </span>
+          </div>
+            <p class="comment-txt more">
+             {{reply.description}}
+            </p>
+            <div class="comment-box-button">
+              <button class="comment-like" aria-label="like this comment">
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 11
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div *ngIf="isShowCommentDetails" class="add-comment">
+        <div class="commenter-pic">
+          <img
+            src="https://img.icons8.com/ios/50/000000/change-user-male.png"
+            class="img-fluid"
+          />
+        </div>
+        <input type="text" class="add-comment" placeholder="Add a comment" name="newComment" [(ngModel)]="newComment" aria-label="Add a comment input box"/>
+        <button type="submit" class="add-comment-button" (click)="addComment()">Comment</button>
+        <button type="submit" class="comment-button fa fa-pencil-square-o"></button>
+      </div>
+    </div>
+  </div>
+</div>

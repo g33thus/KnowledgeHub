@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <section>
+    <div class=" home-banner-wrapper">
+      <h2 class="home-banner-text">Flexible and interactive learning platform
+        <p class="banner-description">Tech Cap is a microlearning platform that delivers fast, efficient and engaging learning on the go. </p>
+        <button class="banner-button" routerLink="./dashboard" routerLinkActive="active">Go to Dashboard
+          <i class="fa fa-arrow-right dashboard-arrow" aria-hidden="true"></i>
+        </button>
+        
+      </h2>
+      <div class="row first-row home-banner" id="first-banner-row" *ngIf="showAnimation">.      
+        <!-- <div class="home-banner-text" id="banner-text1" (@fadeInLeft.done)="animationDone($event)" *ngIf="textAnimationBool" [@fadeInLeft]="textanimationEnter" [@fadeOut]="textanimationLeave">Flexible and interactive learning platform</div> -->
+        <div  class=" home-banner-img " [@fadeInLeft]="imageanimationEnter" [@fadeOut]="imageanimationLeave"></div>        
+      </div>
+      <div class="row second-row home-banner" id="second-banner-row" *ngIf="!showAnimation">
+        <!-- <div class="home-banner-text" id="banner-text1" (@fadeInLeft.done)="animationDone($event)" *ngIf="textAnimationBool" [@fadeInLeft]="textanimationEnter" [@fadeOut]="textanimationLeave"> lorem ipsum dolor sit amet, consectetur</div> -->
+        <div  class=" home-banner-img-2 " [@fadeInLeft]="imageanimationEnter" [@fadeOut]="imageanimationLeave"></div>
+     </div>    
+  </div>
+</section>
+</div>

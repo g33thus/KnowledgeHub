@@ -1,0 +1,88 @@
+﻿@import "variables";
+@import "../../../styles/mixin.scss";
+@media (min-width: 768px) {
+  .subscribe-tab {
+    background-color: white;
+    margin: 85px 4% 0;
+  }
+  .tags-list {
+    box-shadow: $box-shadow;
+    padding: 13px 60px;
+
+    .tags-list-header {
+      display: flex;
+      justify-content: space-between;
+      .tag-filters {
+        display: flex;
+      }
+    }
+  }
+}
+
+@media (max-width: 574px) {
+  .subscribe-tab {
+    .tags-list {
+      margin-top: 125px;
+    }
+  }
+  .tags-list-header {
+    line-height: 3;
+  }
+}
+.no-tag {
+  padding: 20vh;
+  text-align: center;
+}
+.subscribe-tab .tags-list {
+  min-height: 78vh;
+  .tags-list-header {
+    font-size: $font-size-heading;
+    font-weight: $font-weight-heading;
+    border-bottom: $border;
+    .tags-autocomplete {
+      font-size: 1rem;
+    }
+    .tag-filters > div {
+      font-size: $font-size-small;
+      cursor: pointer;
+      > div {
+        padding-right: 25px;
+        min-width: 76px;
+      }
+    }
+    .tag-filters .sort-tags:focus {
+      outline: 1px dashed $black;
+      outline-offset: -2px;
+    }
+  }
+  .list-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 17px 0px;
+    .tag {
+      font-size: $font-size-small;
+      font-weight: $font-weight-text;
+    }
+    button {
+      @include BUTTON(#fff, #0a7fae);
+      min-width: 7vw;
+      border-radius: 0;
+      height: 41px;
+      &:hover {
+        color: white;
+        background-color: #000;
+      }
+    }
+  }
+  .pagination .paginator {
+    margin: 30px auto;
+  }
+  .dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #0a7fae;
+  }
+}
+:host ::ng-deep {
+  @include SEARCHBAR;
+}

@@ -1,0 +1,61 @@
+@import "variables";
+
+@mixin BUTTON($color: #fff, $bgColor: #072b56, $borderColor: #072b56, $focusBorderColor: #000) {
+  color: $color;
+  background-color: $bgColor;
+  min-width: 10vw !important;
+  border-radius: 0;
+  height: 43px;
+  outline: none;
+  border: 1px solid $borderColor;
+  text-align: center;
+  text-decoration: none;
+  &:hover {
+    color: lighten($color, 5%);
+    background-color: lighten($bgColor, 7%);
+    text-decoration: none;
+    outline: none;
+    border-color: lighten($borderColor, 5%);
+  }
+  &:active,
+  &:focus {
+    color: lighten($color, 5%);
+    background-color: lighten($bgColor, 5%);
+    text-decoration: none;
+    outline: 1px dashed #000;
+    outline-offset: 3px;
+    border-color: $focusBorderColor;
+  }
+}
+@mixin SCROLL() {
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+@mixin SEARCHBAR {
+  #search-category {
+    border: none;
+    border-bottom: $border;
+    &:focus {
+      outline: none;
+    }
+    &+i{
+      position: absolute;
+      right: 4%;
+      top: 20%;
+    }
+  }
+}

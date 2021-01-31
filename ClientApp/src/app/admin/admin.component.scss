@@ -1,0 +1,65 @@
+@import "variables";
+@import "../styles/mixin.scss";
+.admin-wrapper{
+    padding: 7%;
+    padding-left: 18%;
+    height: 100vh;
+    .save-changes-wrapper{
+        display: flex;
+        justify-content: flex-end;
+        .save-changes-btn{
+            @include BUTTON();
+            height: 32px;
+        }
+    }
+.feed-list-wrapper{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    width: 100%; 
+    border: 1px solid #e6dede;
+    margin-top: 5px;
+    .list-wrapper{
+     width: 33.3%;
+     padding:0 8%;
+
+     &:nth-child(-n + 2){
+          border-right: $border;
+     }
+    .list-header{
+        font-size:$font-size-medium;
+        font-weight: 600;
+        margin-bottom: 10%;
+        margin-top: 8%;
+
+    }
+    .list-container{
+    width: 18vw;
+    height: 90%;
+    overflow: auto;
+    @include SCROLL();
+    .feed-list{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 8px 0;
+    span{
+        display: none;
+    }
+    &:hover{
+      span{
+          display: inline;
+      }
+    }
+    }
+ }
+    .list-footer{
+      position: absolute;
+        bottom: 3%;
+        span{
+            vertical-align: bottom;
+        }
+}
+}
+}
+}

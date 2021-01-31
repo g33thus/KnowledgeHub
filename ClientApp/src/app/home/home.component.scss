@@ -1,0 +1,72 @@
+@import "variables";
+.container-fluid {
+    height: 100vh;
+    position: relative;
+    background-color: black;
+    overflow: hidden;
+    // background-image: url("../../assets/images/bannerA.jpg");
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    .home-banner-wrapper{
+        // padding: 100px;
+        .home-banner-img {
+            background-image: url("../../assets/images/bannerC.jpg");
+            height: 100vh;
+            width: 100vw;
+            background-size: cover;
+            background-repeat: no-repeat;
+           
+        }
+        .home-banner-img-2 {
+            background-image: url("../../assets/images/bannerB.jpg");
+            height: 100vh;
+            width: 100vw;
+            background-size: cover;
+           
+            background-repeat: no-repeat;
+        }
+        
+        .home-banner-text {
+            font-size: 3rem;
+            color: $white;
+            position: absolute;
+            transform: translate(-50%, 50%);
+            left: 50%;
+            z-index: 2000;
+            width: 100%;
+            text-align: center;
+            top: 25%;
+            // display: none;
+            @media (max-width:768px) {
+              left: 0%;
+              transform: none;  
+              z-index: 0;
+            }
+            .banner-description {
+                font-size: 1rem;
+            }
+            .banner-button {  
+                color: white;
+                background-color: #0A7FAE;
+                width: 145px;
+                height: 35px;
+                font-size: 13px;
+                border: none;
+                i {
+                    padding-left: 8px;
+                }
+                &:focus {
+                    outline: 1px dashed white;
+                    outline-offset: 3px;
+                }
+            }
+           
+        }
+    }
+}
+@media (max-width:1024px) {
+    .home-banner-img, .home-banner-img-2, .container-fluid {
+        background-size: cover; 
+        background-position: center;
+    }
+}

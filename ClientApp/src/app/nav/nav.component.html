@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg fixed-top">
+    <a class="navbar-brand" href="#" aria-label="Tech Cap logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="fa fa-bars"></span>
+    </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto ml-auto">
+          <li class="nav-item"><a class="nav-link" routerLink="./" routerLinkActive="active">Home</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="./dashboard" routerLinkActive="active">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="./feeds" routerLinkActive="active">Feeds</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="./admin" routerLinkActive="active">Admin</a></li>
+          <li *ngIf="loggedIn"><a class="card-text" (click)="onLogout()">Logout</a></li>
+    </ul>
+    <div *ngIf="!loggedIn" (click)="onLogin()"><a class="nav-login-link" tabindex="0"><i class="fa fa-fw fa-user"></i>Login</a></div>
+    <div class="nav-logout" *ngIf="loggedIn" (click)="showCard = !showCard" tabindex="0" aria-label="user profile photo" (clickOutside)="showCard = false"><img [src]="photo" alt="profile photo" class="profile-photo">
+      <div *ngIf="showCard">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">{{account?.userName}}</p>
+            <p class="card-text">{{profile?.jobTitle}}</p>
+            <a class="card-text" (click)="onLogout()">Logout</a>
+          </div>
+      </div>
+    </div>  
+  </div>
+  </div>
+</nav>

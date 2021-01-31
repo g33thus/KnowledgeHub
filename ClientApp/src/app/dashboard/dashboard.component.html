@@ -1,0 +1,106 @@
+<html lang="en"></html>
+<div class="container-fluid dashboard-container">
+    <div class="row">
+      <div class="col-sm-9">
+        <div class="row counts-wrapper">
+          <div class="col-sm-3 tags-count">
+            <h5>
+            <i class="fa fa-bell-o" aria-hidden="true"></i>
+            Subscribed Tags</h5>
+            <p *ngIf="dashboardDetails">{{dashboardDetails.noOfSubscribedTags}}</p>
+          </div>
+          <div class="col-sm-3 read-articles-count">
+            <h5>
+            <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+            Read Articles</h5>
+            <p *ngIf="dashboardDetails">{{dashboardDetails.noOfArticlesRead}}</p>
+          </div>
+          <div class="col-sm-3 liked-articles-count">
+            <h5>
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+            Liked Articles</h5>
+            <p *ngIf="dashboardDetails">{{dashboardDetails.noOfArticlesLiked}}</p>
+          </div>
+          <div class="col-sm-3 saved-articles-count">
+            <h5>
+            <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+            Saved Articles</h5>
+            <p *ngIf="dashboardDetails">{{dashboardDetails.noOfArticlesSaved}}</p>
+          </div>
+        </div>
+        <div class="row chart-wrapper">
+
+            <div class="col-sm-7 dashboard-bar-chart">
+              <h5 class="bar-chart-title"><i class="fa fa-bar-chart" aria-hidden="true"></i>Monthly Data</h5>
+                <div class="bar-chart" [hidden]="!barChartOptions">
+                  <canvas baseChart
+                          [datasets]="barChartData"
+                          [labels]="barChartLabels"
+                          [options]="barChartOptions"
+                          [chartType]="barChartType"
+                          [colors]="chartColors">
+                  </canvas>
+                </div>
+            </div>
+
+            <div class="col-sm-4 dashboard-polar-chart">
+              <h5 class="polarchart-title"><i class="fa fa-pie-chart" aria-hidden="true"></i>
+                Polar Chart Data
+              </h5>
+              <div class="polarchart">
+                <canvas baseChart height="5vh" width="6vw"
+                  [data]="polarAreaChartData"
+                  [labels]="polarAreaChartLabels"
+                  [chartType]="polarAreaChartType"
+                  [colors]="polarChartColors">
+                </canvas>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-sm-3 dashboard-aside">
+        <div class="row ">
+            <div class="col-sm-12 blogstile-wrapper">
+              <h6 class="blogstile-title" id="blogstile-title">
+                <!-- <img src="../../assets/images/valoremlogo.jpg" alt="Valorem reply logo" height="50px"> -->
+                <i class="fa fa-window-restore" aria-hidden="true"></i>
+                Blogs from Valorem Website
+              </h6>
+              <div class="blogstile">
+                <div class="blog">
+                  <!-- <i class="fa fa-angle-right" aria-hidden="true"></i> -->
+                  <a href="https://valoremreply.com/post/dtvalue_7/" target="_blank" tabindex="0">Digital Transformation Part 7- Digital Operations Platforms
+                  <img src="../../assets/images/valoremlogo-removebg-preview (1).png" alt="Valorem reply logo" height="50px"></a>
+                  <p class="blog-author">Published by <span class="blog-author-name">Don Mishory</span></p>
+                  
+                </div>
+                <div class="blog">
+                  <a href="https://valoremreply.com/post/qubites_3/" target="_blank" tabindex="0">QuBites 3- The Impact of Quantum Computing Today
+                    <img src="../../assets/images/valoremlogo-removebg-preview (1).png" alt="Valorem reply logo" height="50px">
+                  </a>
+                  <p class="blog-author">Published by <span class="blog-author-name">René Schulte</span></p>
+                </div>
+                <div class="blog" id="last-blog">
+                  <a href="https://valoremreply.com/post/immersivepresentations/" target="_blank" tabindex="0">Immersive Presentations- What’s next for video conferencing?
+                    <img src="../../assets/images/valoremlogo-removebg-preview (1).png" alt="Valorem reply logo" height="50px">
+                  </a>
+                  <p class="blog-author" id="blog-author">Published by <span class="blog-author-name">Jobi Joy</span></p>
+                </div>
+                <a class="read-more-blogs" href="https://valoremreply.com/blog/" target="_blank">Read More<i style="padding: 0 5px; font-size: 14px;" class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 trending-wrapper">
+            <h5 class="trending-title">
+              <i class="fa fa-external-link" aria-hidden="true"></i>
+              Trending
+            </h5>
+            <div *ngIf="trending" class="ml-2"><b>Author -</b> {{trending.author}}</div>
+            <div *ngIf="trending" class="ml-2"><b>Title -</b><a href="{{trending.url}}" target="_blank"> {{trending.title}}</a></div>
+            <div *ngIf="trending" class="ml-2 trend-desc"><b>Description -</b> {{trending.description}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

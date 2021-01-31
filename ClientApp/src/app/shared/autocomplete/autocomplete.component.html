@@ -1,0 +1,28 @@
+    <div
+      class="select-category search-dropdown"
+      (clickOutside)="showDropdown = false"
+    >
+      <input
+        attr.title="{{userEntry}}"
+        type="text"
+        placeholder="{{placeholder}}"
+        id="search-category"
+        [ngModel]="userEntry"
+        (ngModelChange)="searchSidebarFilter($event)"
+        (focus)="showDropdown = true"
+        autocomplete="off"
+        aria-label="search tags"
+      />
+      <i class="fa fa-search"></i>
+      <div
+        id="dropdown-category-content"
+        class="dropdown-content"
+        *ngIf="showDropdown && isAutocomplete"
+      >
+        <a
+          *ngFor="let listItem of list | autocompletefilter: userEntry: isAutocomplete"
+          (click)="userEntry = listItem.name; showDropdown = false"
+          >{{listItem.name}}</a
+        >
+      </div>
+    </div>

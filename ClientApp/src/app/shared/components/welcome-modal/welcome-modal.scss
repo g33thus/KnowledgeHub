@@ -1,0 +1,43 @@
+@import "../../../../styles/mixin.scss";
+
+#modal-content-wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  color: black;
+  grid-template-rows: repeat(1fr, 3);
+}
+
+#modal-title {
+  font-size: 22px;
+}
+
+#modal-footer {
+  justify-self: right;
+  align-self: center;
+}
+
+#modal-footer {
+  width: 100%;
+}
+
+.dash-button {
+  float: right;
+}
+
+.welcome-content {
+  text-align: center;
+}
+
+.btn-primary {
+  border-radius: 2rem;
+}
+
+button {
+  margin: 0 0 0 0.5em;
+  border-radius: 2rem !important;
+  height: 5vh !important;
+  padding: 0.5vh;
+  white-space: nowrap;
+  @include BUTTON();
+}

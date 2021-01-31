@@ -1,0 +1,61 @@
+<div class="container">
+  <div
+    class="article-container" role="main"
+    infiniteScroll
+    [infiniteScrollDistance]="scrollDistance"
+    [infiniteScrollThrottle]="scrollThrottle"
+    (scrolled)="onScroll()"
+    (scrolledUp)="onScrollUp()"
+    [infiniteScrollDisabled]="isFullListDisplayed"
+  >
+
+  <div class="dropdown article-filters">
+    <a class="dropdown-toggle" tabindex="0" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{ articlesFilterBy }}
+    </a>
+    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownMenuLink2">
+      <a class="dropdown-item" tabindex="0" *ngFor="let filterByValue of articlesFilter"  (click)="articlesFilterBy = filterByValue">{{ filterByValue }}</a>
+    </div>
+  </div>
+
+    <div *ngFor="let articleObj of articleList" class="card">
+      <div class="card-body">
+        <h4 class="card-header">{{ articleObj.article.title }}</h4>
+        <div class="row">
+          <img
+            *ngIf="articleObj.article.urlToImage"
+            class="col md-1"
+            src="{{ articleObj.article.urlToImage }}"
+            alt="Card image cap"
+          />
+          <div class="card-text col sm-12">
+            {{ articleObj.article.description }}
+            <!-- <p><a href="{{ articleObj.article.url }}">Go to the article</a></p> -->
+            <p><a href="#" data-toggle="modal" data-target="#iframeModal">Go to the article</a></p>
+          </div>
+        </div>
+        
+<div class="modal fade" id="iframeModal" tabindex="-1" role="dialog" aria-labelledby="articles-modal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe height="615" width="970" [src]="transform(articleObj.article.url)" class="articles-iframe" sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="row">
+          <div class="col-12" id="feeder-comments">
+            <app-feeder-comments [article]="articleObj"></app-feeder-comments>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

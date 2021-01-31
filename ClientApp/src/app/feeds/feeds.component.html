@@ -1,0 +1,27 @@
+﻿<div class="container-fluid feedContainer">
+    <ul class="nav nav-tabs fixed-top" aria-label="nav-item" id="feedTab" role="tablist">
+        <li class="nav-item"  role="tab">
+            <a class="nav-link active" id="article-tab" data-toggle="tab" href="#articles" aria-label="articles"
+                 (click)="isFeedView = true">Articles</a>
+        </li>
+        <li class="nav-item"  role="tab">
+            <a class="nav-link" id="subscriptions-tab" data-toggle="tab" href="#subscriptions" aria-label="subscriptions"
+                 (click)="isFeedView = false">Subscriptions</a>
+        </li>
+    </ul>
+    <div class="row">
+        <div class="col-sm-3 sidebar-container">
+            <sidebar  [isFeedView]="isFeedView"(articleListEmmiter)=setArticleList($event) (tagListEmmiter)=setTagList($event)></sidebar>
+        </div>
+        <div class="col-sm-9 tab-content" id="feedTabContent">
+            <div id="articles" class="tab-pane fade show active" role="tabpanel" aria-labelledby="subscriptions-tab">
+                <div *ngIf="isFeedView">
+                    <app-feeder-tab [articleList]="articleList"></app-feeder-tab>
+                </div>
+            </div>
+            <div id="subscriptions" class="tab-pane fade" role="tabpanel" aria-label="profile-tab">         
+                    <app-subscribe-tab [tagsList]="tagList"></app-subscribe-tab>
+            </div>
+        </div>
+    </div>
+</div>

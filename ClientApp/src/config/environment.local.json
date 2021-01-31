@@ -1,0 +1,15 @@
+{
+  "clientId": "5b0bbc9d-a4b3-43d6-a404-3f05d978563f",
+  "authority": "https://login.microsoftonline.com/organizations",
+  "redirectUri": "https://localhost:44329/",
+  "cacheLocation": "localStorage",
+  "unprotectedResources": [],
+  "protectedResourceMap": [
+    ["https://graph.microsoft.com/beta/me/photo/$value", ["user.read"]],
+    ["https://graph.microsoft.com/v1.0/me", ["user.read"]]
+  ],
+  "newsAPIKey": "ef54deab5c50444294909dc0236911c0",
+  "profileDetailsGraphApiUrl": "https://graph.microsoft.com/v1.0/me",
+  "profilePhotoGraphApiUrl": "https://graph.microsoft.com/beta/me/photo/$value",
+  "apiBaseURL": "https://localhost:44329/api/"
+}

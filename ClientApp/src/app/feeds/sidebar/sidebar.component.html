@@ -1,0 +1,36 @@
+<div class="sidenav">
+  <div class="sidebar-heading-wrapper">
+    <div class="categorywrapper" *ngIf="!showSubCategoryHeading && !showTagsHeading">
+      <p class="sidebar-title">Categories</p>  
+    </div>
+    <div class="subcategory-wrapper" *ngIf="showSubCategoryHeading && !showTagsHeading">
+      <div class="subcat-title-wrapper">
+      <a class="fa fa-arrow-left"  #backButton (click)="goToCategory()" (keydown.enter)="goToCategory()" tabindex="0" aria-label="Back arrow, click to navigate to categories list"></a>
+      <p class="sidebar-title">Sub Categories</p>
+    </div>
+      
+    </div>
+    <div class="subcategory-wrapper" *ngIf="showTagsHeading">
+      <div class="subcat-title-wrapper">
+      <a class="fa fa-arrow-left" #backButton (click)="goToSubcategory()"  (keydown.enter)="goToSubcategory()" tabindex="0" role="button" aria-label="Back arrow, click to navigate to sub categories list"></a>
+      <p class="sidebar-title">Tags</p>
+    </div>
+    </div>
+    <i class="fa fa-angle-down" aria-hidden="true" (click)="showSidebarDropdown = !showSidebarDropdown"></i>
+  </div>
+    <div class="category-wrapper" *ngIf="showSidebarDropdown">
+      <div class="category-autocomplete" *ngIf="showSubCategoryHeading">
+        <app-autocomplete [list]="sidebarList" [placeholder]="'Search'" [isAutocomplete]=false (userInput)="onSearchFilter($event)"></app-autocomplete>
+      </div>
+      <a class="categories" *ngFor="let category of sidebarList" (click)="showSubCategory(category.id,category.name)">{{ category.name}}</a>
+    </div>
+    
+    <div class="category-wrapper-desktop">
+      <div class="category-autocomplete" *ngIf="showSubCategoryHeading">
+        <app-autocomplete [list]="sidebarList" [placeholder]="'Search'" [isAutocomplete]=false (userInput)="onSearchFilter($event)"></app-autocomplete>
+      </div>
+      <a class="categories" *ngFor="let category of sidebarList" (click)="showSubCategory(category.id,category.name)" (keydown.enter)="showSubCategory(category.id)" tabindex="0">{{ category.name }}
+         <i class="fa fa-angle-right" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>

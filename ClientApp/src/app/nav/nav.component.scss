@@ -1,0 +1,75 @@
+@import 'variables';
+
+nav {
+  background-color: #000;
+    height: 64px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    .navbar-brand {
+      background-image: url('../../assets/images/logoC.png');
+      background-size: 150px 95px;
+      width: 150px;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 40px;
+    }
+    .nav-link:focus {
+        outline: 1px dashed white;
+        outline-offset: 3px;
+    }
+
+  a {
+    color: $white;
+  }
+
+  .navbar-toggler {
+    border-color: #c4c4c4;
+
+    span {
+      color: #a9a7a7;
+    }
+  }
+
+  .navbar-nav {
+    @media (min-width: 767px) {
+      li:last-child {
+        display: none;
+      }
+    }
+  }
+
+  .nav-logout {
+    position: relative;
+    font-size: 25px;
+    &:focus{
+      outline: 1px dashed $white;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    .card {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+      border: none;
+      position: absolute;
+      right: 0;
+      width: 14rem;
+      border-radius: 0;
+
+      .card-text {
+        font-size: 16px;
+        color: $black;
+      }
+    }
+
+    .profile-photo {
+      height: 31px;
+      width: 31px;
+      border-radius: 50%;
+    }
+  }
+  .navbar-collapse {
+    background-color: black;
+  }
+}

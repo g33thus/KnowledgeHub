@@ -1,0 +1,93 @@
+﻿<div class="subscribe-tab">
+  <div class="selection-container"></div>
+  <div class="tags-list">
+    <div class="tags-list-header py-3">
+      <span>Tag Name</span>
+      <div class="tag-filters">
+        <div class="d-flex">
+          <div class="dropdown">
+            <a
+              class="dropdown-toggle"
+              href="#"
+              role="button"
+              id="dropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {{ tagStatus }}
+            </a>
+            <div
+              class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
+              aria-labelledby="dropdownMenuLink"
+            >
+              <a
+                class="dropdown-item"
+                tabindex="0"
+                *ngFor="let list of subscriptionStatusList"
+                (click)="filterTag(list)"
+                >{{ list }}</a
+              >
+            </div>
+          </div>
+          <div class="sort-tags" (click)="sortAlphabetically()" tabindex="0">
+            <span
+              >Sort
+              <i class="fa fa-sort-alpha-asc" *ngIf="isAscending"></i>
+              <i class="fa fa-sort-alpha-desc" *ngIf="!isAscending"></i
+            ></span>
+          </div>
+        </div>
+        <div class="tags-autocomplete">
+          <app-autocomplete
+            [list]="tagsList"
+            [placeholder]="'Search Tags'"
+            (userInput)="onSearchFilterTags($event)"
+            [isAutocomplete]="false"
+          ></app-autocomplete>
+        </div>
+      </div>
+    </div>
+
+    <div class="list-container">
+      <div
+        *ngFor="
+          let tag of tagsList
+            | paginate: { itemsPerPage: itemsPerPage, currentPage: pageNumber }
+        "
+        class="list-row"
+      >
+        <div class="tag">{{ tag.name }}</div>
+        <button
+          title="subscribe"
+          (click)="subscribeTag(tag)"
+          *ngIf="!tag.isUserSubscribed"
+        >
+          <span>Subscribe</span>
+          <i class="fa fa-bell pl-1"></i>
+        </button>
+        <button
+          title="Unsubscribe"
+          (click)="unSubscribeTag(tag)"
+          *ngIf="tag.isUserSubscribed"
+        >
+          <span>Unsubscribe</span>
+          <i class="fa fa-bell-slash pl-1"></i>
+        </button>
+      </div>
+      <div *ngIf="tagsList.length === 0">
+        <div class="no-tag">
+          Please choose a category and subcategory to display the list of tags.
+        </div>
+      </div>
+    </div>
+    <div class="pagination">
+      <pagination-controls
+        (pageChange)="pageNumber = $event"
+        class="paginator"
+        responsive="true"
+        autoHide="true"
+      ></pagination-controls>
+    </div>
+  </div>
+</div>

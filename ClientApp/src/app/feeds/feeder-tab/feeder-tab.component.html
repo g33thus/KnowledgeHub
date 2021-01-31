@@ -1,0 +1,16 @@
+<div>
+    <div *ngIf="!isSubscribed" class=card>
+        <div>
+            <div class="card-body">
+                <h5 class="card-title">You have no active subscriptions!</h5>
+                <img class="card-img-top" src="../../../assets/images/workstation-405768_1920.jpg" alt="Welcome image">
+                <p class="card-text">
+                    To get started, lets add your first subscription.</p>
+                <button class="btn" type="button">Add subscription</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isSubscribed">
+        <app-feeder-articles [articleList]="articleList"></app-feeder-articles>
+    </div>
+</div>

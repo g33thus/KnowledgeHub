@@ -1,0 +1,31 @@
+@import "variables";
+//add any common styles here
+
+body {
+  font-family: sans-serif;
+  font-size: $font-size-small;
+}
+
+a {
+  color: $link-color;
+  cursor: pointer;
+
+  &:hover {
+    color: darken($link-color, 10%);
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 1px dashed black;
+    outline-offset: 3px;
+  }
+}
+
+#modal-title {
+  font-weight: bold;
+}
+
+.mat-dialog-container {
+  background-color: #fff;
+}
+

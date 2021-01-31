@@ -1,0 +1,47 @@
+@import "variables";
+
+.feedContainer{
+  //background-image: url('../../assets/images/sidenav.jpg');
+  margin: 4rem auto 0;
+  background-color: #eaeaea;
+  min-height: 91vh;
+  .sidebar-container {
+    padding: 4% 0 0 2%;
+   }
+   #feedTab {
+    top: 64px;
+    background-image: url('../../assets/images/eaeaea.jpg');
+    margin: auto 30px;
+    padding-top: 30px;
+    @media (max-width: 767px) {
+      row {
+        margin-top: 190px;
+      }
+    }
+  }
+   @media (max-width: 575px) {
+    .sidebar-container {
+      position: fixed;
+      top: 120px;
+      right: 0;
+      left: 0;
+      z-index: 1030;
+      #feedTabContent {
+        padding: 0;
+      }
+     }  
+    #feedTab {
+      margin: 0 10px;
+    }
+  }
+  .nav-tabs {
+    border-bottom: 1px solid #0A7FAE;
+    .nav-item {
+      #article-tab.active, #subscriptions-tab.active {
+        color: #fff;
+        background-color: #0A7FAE;
+        border-color: #dee2e6 #dee2e6 #0A7FAE;
+      }
+    }
+  } 
+}

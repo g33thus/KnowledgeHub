@@ -1,0 +1,156 @@
+@import "../../../../../styles/mixin.scss";
+@import "variables";
+
+/* Header area of comments section*/
+.comments-header {
+  padding: 1em 0.5em;
+  width: 100%;
+  font-size: $font-size-small;
+  @media (min-width: 797px) {
+    display: flex;
+    justify-content: space-between;
+  }
+  .comment-header-button {
+    border: none;
+    display: block;
+    float: left;
+    outline: none;
+    .fa-heart {
+      color: red;
+    }
+    .fa-comments {
+      color: $blue;
+    }
+    .fa-bookmark {
+      color: #f1c40f;
+    }
+  }
+  .comment-header-button-right {
+    border: none;
+    color: $link-color;
+    text-align: left;
+  }
+  .comment-header-button:focus > i, .comment-header-button-right:focus {
+    outline: 1px dashed #000;
+    outline-offset: 3px;
+  }
+}
+
+/* Comment details section*/
+.comment-box {
+  width: 100%;
+  float: left;
+  height: 100%;
+  background-color: #fafafa;
+  padding: 0.8em 0.8em 0.8em;
+  margin-bottom: 1em;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: $font-size-small;
+
+  button {
+    border: none;
+    outline: none;
+  }
+  .commenter-wrapper {
+    display: flex;
+  }
+  .commenter-pic {
+    display: inline-block;
+    border-radius: 100%;
+    border: 2px solid $white;
+    overflow: hidden;
+    background-color: $white;
+  }
+  .commenter-name {
+    color: $link-color;
+    margin-left: 0.2em;
+    display: inline-block;
+    position: relative;
+    font-weight: bold;
+    @media (min-width:768px) {
+      top: 13px;
+    }
+  }
+  .comment-time {
+    font-weight: normal;
+    margin-left: 0.5em;
+  }
+  p.comment-txt {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5em;
+  }
+
+  .comment-box-button {
+    padding: 2px 5px 0px;
+    line-height: 20px;
+    float: right;
+    border: none;
+    .comment-like,
+    .comment-reply {
+      color: $blue;
+      background-color: transparent;
+      &:focus {
+          outline: 1px dashed #000;
+          outline-offset: 3px;    
+      }
+    }
+  }
+  .replied {
+    background-color: $white;
+    width: 95%;
+    float: right;
+    margin-top: 0.2em;
+  }
+}
+
+/* Add comments section*/
+.add-comment {
+  background-color: transparent;
+  border: none;
+  position: relative;
+  width: 100%;
+  display: flex;
+  font-size: $font-size-small;
+  &:focus {
+    outline: 1px dashed #000;
+    outline-offset: 3px;
+  }
+
+  input {
+    border:  1px solid $link-color;
+    border-radius: 5px;
+    box-shadow: none;
+    width: 100%;
+    padding: 0.5em 1em;
+    margin-left: 0.5em;
+  }
+  button {
+    float: right;
+    margin: 0 0 0 0.5em;
+    border-radius: 5px !important;
+    height: 6vh !important;
+    padding: 0.5vh;
+    white-space: nowrap;
+    width: min-content !important;
+    @include BUTTON();
+  }
+  
+  @media (max-width: 767px) {
+    .add-comment-button {
+      display: none;
+    }
+    .comment-button {
+      font-size: 24px;
+      &::before {
+        padding: 8px;
+      }
+    }
+  }
+  .comment-button {
+    @media (min-width: 768px) {
+      display: none;
+      
+    }
+  }
+}
